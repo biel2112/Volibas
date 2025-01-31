@@ -33,7 +33,7 @@ Nela, somos encaminhados para uma lista de times cadastrados através do formul�
 
 ## Adicionar Jogador
 
-Nesta tela, vamos cadastrar um *Jogador* colocando seu nome e determinando (ou não) uma posição a ele. Feito isso, apertamos em salvar e somos encaminhados para a tela inicial.
+Nesta tela, vamos cadastrar um **Jogador** colocando seu nome e determinando (ou não) uma posição a ele. Feito isso, apertamos em salvar e somos encaminhados para a tela inicial.
 
 
 
