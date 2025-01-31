@@ -5,12 +5,14 @@ class Jogador {
   String nome;
   Position posicao;
   int? timeId;
+  bool inTeam;
 
   Jogador({
     this.id,
     required this.nome,
     required this.posicao,
     this.timeId,
+    this.inTeam = false
   });
 
   Map<String, dynamic> toMap() {
@@ -19,6 +21,7 @@ class Jogador {
       'nome': nome,
       'posicao': posicao.index,
       'timeId': timeId,
+      'inTeam': inTeam ? 1 : 0
     };
   }
 
@@ -28,6 +31,7 @@ class Jogador {
       nome: map['nome'],
       posicao: Position.values[map['posicao']],
       timeId: map['timeId'],
+      inTeam: map['inTeam'] == 1
     );
   }
 }

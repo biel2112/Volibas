@@ -36,20 +36,28 @@ class TeamDao {
     );
   }
 
-  Future<void> adicionarJogadoresAoTime(
-      List<Jogador> jogadores, int timeId) async {
-    final db = await _dbHelper.database;
-    for (var jogador in jogadores) {
-      await db.insert(
-        'jogadores_times',
-        {
-          'jogador_id': jogador.id,
-          'time_id': timeId,
-        },
-        conflictAlgorithm: ConflictAlgorithm.ignore,
-      );
-    }
+  Future<void> adicionarJogadoresAoTime(List<Jogador> jogadores, int timeId) async {
+  final db = await _dbHelper.database;
+  for (var jogador in jogadores) {
+    // Inserir jogador na tabela de relacionamento jogadores_times
+    await db.insert(
+      'jogadores_times',
+      {
+        'jogador_id': jogador.id,
+        'time_id': timeId,
+      },
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
+
+    // Atualizar o atributo 'inTeam' do jogador para 'true'
+    await db.update(
+      'jogadores',
+      {'inTeam': 1}, // 1 representa true no SQLite
+      where: 'id = ?',
+      whereArgs: [jogador.id],
+    );
   }
+}
 
   Future<List<Jogador>> getJogadoresByTime(int timeId) async {
     final db = await _dbHelper.database;

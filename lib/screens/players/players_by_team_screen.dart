@@ -31,6 +31,9 @@ class _TelaJogadoresPorTimeState extends State<TelaJogadoresPorTime> {
     setState(() {
       jogadores = data;
     });
+    for (var jogador in jogadores) {
+    print('Jogador: ${jogador.nome}, Posição: ${positionToString(jogador.posicao)}, inTeam: ${jogador.inTeam}');
+  }
   }
 
   void _removerJogador(Jogador jogador) async {

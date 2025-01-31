@@ -36,15 +36,17 @@ class _TelaJogadoresDisponiveisState extends State<TelaJogadoresDisponiveis> {
   }
 
   void _carregarJogadoresDisponiveis() async {
-    final data = await _playerService.getJogadoresDisponiveis(widget.time.id!);
-    setState(() {
-      jogadoresDisponiveis = data;
-      jogadoresFiltrados = jogadoresDisponiveis;
-      jogadoresSelecionados = jogadoresSelecionados
-          .where((jogador) => jogadoresDisponiveis.contains(jogador))
-          .toList();
-    });
-  }
+  final data = await _playerService.getJogadoresDisponiveis(widget.time.id!);
+  setState(() {
+    // Filtra os jogadores com inTeam == false
+    jogadoresDisponiveis = data.where((jogador) => jogador.inTeam == false).toList();
+    jogadoresFiltrados = jogadoresDisponiveis;
+    jogadoresSelecionados = jogadoresSelecionados
+        .where((jogador) => jogadoresDisponiveis.contains(jogador))
+        .toList();
+  });
+}
+
 
   void _filtrarJogadores() {
     String query = _searchController.text.toLowerCase();

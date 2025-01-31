@@ -23,7 +23,7 @@ class DatabaseHelper {
       nome TEXT,
       posicao INTEGER,
       timeId INTEGER,
-      disponivel INTEGER DEFAULT 1, -- Adicionar a coluna 'disponivel' com valor padrão 1
+      inTeam INTEGER DEFAULT 1,
       FOREIGN KEY (timeId) REFERENCES times (id) ON DELETE SET NULL
     )
     ''');
@@ -57,7 +57,7 @@ class DatabaseHelper {
     String path = join(await getDatabasesPath(), 'volei_app.db');
     return await openDatabase(
       path,
-      version: 2,
+      version: 1,
       onCreate: _onCreate,
       onUpgrade: _onUpgrade,
     );

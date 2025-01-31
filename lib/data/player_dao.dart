@@ -42,18 +42,28 @@ class PlayerDao {
   }
 
   Future<void> removerJogadorDoTime(int jogadorId, int timeId) async {
-    final db = await _dbHelper.database;
-    await db.delete(
-      'jogadores_times',
-      where: 'jogador_id = ? AND time_id = ?',
-      whereArgs: [jogadorId, timeId],
-    );
-  }
+  final db = await _dbHelper.database;
+
+  // Remover jogador da tabela de relacionamento jogadores_times
+  await db.delete(
+    'jogadores_times',
+    where: 'jogador_id = ? AND time_id = ?',
+    whereArgs: [jogadorId, timeId],
+  );
+
+  // Atualizar o atributo 'inTeam' do jogador para 'false'
+  await db.update(
+    'jogadores',
+    {'inTeam': 0}, // 0 representa false no SQLite
+    where: 'id = ?',
+    whereArgs: [jogadorId],
+  );
+}
 
   Future<void> adicionarJogadorDisponivel(int jogadorId) async {
     final db = await _dbHelper.database;
     await db.rawUpdate(
-      'UPDATE jogadores SET disponivel = 1 WHERE id = ?',
+      'UPDATE jogadores SET inTeam = 0 WHERE id = ?',
       [jogadorId],
     );
   }
@@ -69,6 +79,12 @@ class PlayerDao {
         },
         conflictAlgorithm: ConflictAlgorithm.ignore,
       );
+      await db.update(
+      'jogadores',
+      {'inTeam': true}, // Define 'inTeam' como true
+      where: 'id = ?', // Filtro para atualizar o jogador correto
+      whereArgs: [jogador.id],
+    );
     }
   }
 
@@ -89,13 +105,11 @@ class PlayerDao {
 
   Future<List<Jogador>> getJogadoresSemTime(int timeId) async {
     final db = await _dbHelper.database;
-    var res = await db.query(
-      'jogadores',
-      where: 'timeId IS NULL OR timeId != ?',
-      whereArgs: [timeId],
-    );
-    List<Jogador> lista =
-        res.isNotEmpty ? res.map((j) => Jogador.fromMap(j)).toList() : [];
-    return lista;
+  var res = await db.query(
+    'jogadores',
+    where: 'inTeam = ?',
+    whereArgs: [0], // Filtra apenas jogadores que não estão em um time
+  );
+  return res.isNotEmpty ? res.map((j) => Jogador.fromMap(j)).toList() : [];
   }
 }
