@@ -29,6 +29,11 @@ Ao pressionar a primeira opção, somos encaminhados para uma lista de times cad
 <br>
 
 ![alt text](images/tela_inicial1.jpeg)
+<br>
+<br>
+<br>
+
+![alt text](images/tela_inicial2.jpeg)
 
 <br>
 <br>
@@ -75,3 +80,45 @@ Acima da lista de jogadores, temos uma barra de pesquisa funcional. Basta digita
 
 ### 4 - Adicionar Jogador
 Temos essa opção ao pressionarmos o botão na parte inferior da tela. Possui a mesma função que o primeiro botão da tela inicial.
+
+## Adicionar Time
+Na terceira opção da tela inicial, somos encaminhados para um formulário de cadastro de times. Basta inserirmos um nome para o time e salvar.
+<br>
+<br>
+<br>
+
+![alt text](images/form_time.jpeg)
+
+## Lista de Times
+E na quarta e última opção da tela inicial, somos encaminhados para uma tela de listagem de times cadastrados pela opção anterior. Possui algumas das mesmas funcionalidades da lista de jogadores (Editar, Excluir e Adicionar). Mas tem um diferencial que é a opção de adicionarmos jogadores em cada time cadastrado. Basta **selecionar** o time que deseja adicionar jogadores.
+<br>
+<br>
+<br>
+
+![alt text](images/lista_times.jpeg)
+<br>
+<br>
+<br>
+Quando o time não possui jogadores, precisamos adicionar. Para isso, basta pressionar o botão no canto inferior direito da tela.
+<br>
+<br>
+<br>
+
+![alt text](images/lista_jogadores_time1.jpeg)
+
+<br>
+<br>
+<br>
+Ao pressionarmos o botão da tela anterior, somos encaminhados para uma lista de jogadores disponíveis. Quando o jogador estiver em um time, ele não aparecerá mais nessa lista, mas retornará para essa lista ao ser removido do time que estava.
+No topo dessa mesma tela, vemos uma barra de pesquisa (funcional) dos jogadores disponíveis.
+Para adicionar um jogador à lista, basta pressionar a checkbox ao lado esquerdo dos nomes dos jogadores e pressionar o botão no canto inferior da tela.
+
+![alt text](images/lista_jogadores_disponiveis.jpeg)
+
+<br>
+<br>
+<br>
+Pronto!!
+O jogador foi adicionado à lista!
+
+![alt text](images/lista_jogadores_time2.jpeg)
