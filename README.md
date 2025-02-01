@@ -112,6 +112,9 @@ Quando o time não possui jogadores, precisamos adicionar. Para isso, basta pres
 Ao pressionarmos o botão da tela anterior, somos encaminhados para uma lista de jogadores disponíveis. Quando o jogador estiver em um time, ele não aparecerá mais nessa lista, mas retornará para essa lista ao ser removido do time que estava.
 No topo dessa mesma tela, vemos uma barra de pesquisa (funcional) dos jogadores disponíveis.
 Para adicionar um jogador à lista, basta pressionar a checkbox ao lado esquerdo dos nomes dos jogadores e pressionar o botão no canto inferior da tela.
+<br>
+<br>
+<br>
 
 ![alt text](images/lista_jogadores_disponiveis.jpeg)
 
@@ -120,5 +123,8 @@ Para adicionar um jogador à lista, basta pressionar a checkbox ao lado esquerdo
 <br>
 Pronto!!
 O jogador foi adicionado à lista!
+<br>
+<br>
+<br>
 
 ![alt text](images/lista_jogadores_time2.jpeg)
