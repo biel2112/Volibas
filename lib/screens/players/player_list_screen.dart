@@ -36,8 +36,8 @@ class _TelaListaJogadoresState extends State<TelaListaJogadores> {
   void _carregarJogadores() async {
     final data = await _playerService.getJogadores();
     setState(() {
-      jogadores = data;
-      jogadoresFiltrados = jogadores;
+      jogadores = data..sort((a, b) => a.nome.toLowerCase().compareTo(b.nome.toLowerCase()));
+    jogadoresFiltrados = List.from(jogadores);
     });
   }
 

@@ -28,7 +28,9 @@ class _TelaListaTimesState extends State<TelaListaTimes> {
   Future<void> _carregarTimes() async {
     final data = await _teamService.getTimes();
     setState(() {
-      times = data;
+      times = data
+        .toList()
+      ..sort((a, b) => a.nome.toLowerCase().compareTo(b.nome.toLowerCase()));
     });
   }
 
